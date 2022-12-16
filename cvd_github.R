@@ -1,6 +1,7 @@
 
 
-#This script covers data visualization code for Figures 2B, and Figures 3A, 3B, 3C. It also covers code to compute input data for Figure 2C, Figure 2D, and Figure 3D. Other figures (Figure 1A, 1B, 1C, 1D and Figure 2A) were done in Excel. 
+#This script covers data visualization code for Figures 2B, and Figures 3A, 3B, 3C. It also covers code to compute input data for Figure 2C, 
+#Figure 2D, and Figure 3D. Other figures (Figure 1A, 1B, 1C, 1D and Figure 2A) were done in Excel. 
 
 
 library(tidyverse)
@@ -69,7 +70,8 @@ data_d$stress <- as.factor(data_d$stress)
 
 
 
-#fit a linear regression model to analyze the relationship between CVD status (factor:(1,0)) with all other variables:demographic variables (e.g., age, UN.subregion) and technical variables (e.g., evaluation type, evaluation year), stress status, and all symptoms. 
+#fit a linear regression model to analyze the relationship between CVD status (factor:(1,0)) with all other variables:demographic 
+#variables (e.g., age, UN.subregion) and technical variables (e.g., evaluation type, evaluation year), stress status, and all symptoms. 
 
 lm <- lm(cvd ~ . , data = data_d)
 
@@ -78,12 +80,10 @@ summary(lm)
 
 
 
+#########################################################################################################################################################
 
 
-
-
-
-##data wrangling to prepare input for Figure 2B
+##Data wrangling steps to prepare input for Figure 2B
 
 
 
@@ -150,13 +150,7 @@ ggplot(updated, aes(symptoms, fill = condition), binwidth = 0.5) + geom_density(
 
 
 
-
-
-
-
-
-
-
+#########################################################################################################################################################
 
 
 
@@ -185,8 +179,6 @@ write.table(freq_df_cvd, 'frequencies_cvd.txt', quote=FALSE, col.names=TRUE, sep
 
 
 
-
-
 #for CVD-
 
 noncvd <- data_d %>% filter(cvd == 0)
@@ -202,6 +194,8 @@ write.table(freq_df_noncvd, 'frequencies_noncvd.txt', quote=FALSE, col.names=TRU
 
 
 
+
+#########################################################################################################################################################
 
 ## Odds ratio and fisher's exact test for Figure 2D
 
@@ -221,10 +215,7 @@ fisher.test(matrix(c(191,159,24,79),nrow=2))
 
 
 
-
-
-
-
+#########################################################################################################################################################
 
 ##Figures 3A, B, C, and D
 
